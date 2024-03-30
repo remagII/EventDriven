@@ -28,114 +28,292 @@
       <link rel="stylesheet" href="Resources/style.css" />
     </head>
   </head>
+  <header>
+    <div class="header">
+      <button class="btn btn-outline-primary active employee-list-btn">
+        Employee list
+      </button>
+      <button class="btn btn-outline-primary leave-list-btn">Leave list</button>
+      <button class="btn btn-outline-primary signatories-list-btn">
+        Signatories
+      </button>
+    </div>
+  </header>
+
   <body>
-    <div class="form-container">
-      <h1>Employee Manager</h1>
+    <div class="all-container">
+      <div class="employee-list-container">
+        <div class="div-title"><h1>Employee List</h1></div>
+        <div class="form-container">
+          <form class="form-add">
+            <div class="form-group">
+              <label>ID</label>
+              <input
+                type="text"
+                name="number"
+                id="number"
+                class="form-control"
+              />
 
-      <form class="form">
-        <div class="form-group">
-          <label>Number</label>
-          <input type="text" name="number" id="number" class="form-control" />
+              <div class="form-div">
+                <div>
+                  <label>First Name</label>
+                  <input type="text" name="first-name" class="form-control" />
+                </div>
 
-          <div class="form-div">
+                <div>
+                  <label>Middle Name</label>
+                  <input type="text" name="middle-name" class="form-control" />
+                </div>
+
+                <div>
+                  <label>Last Name</label>
+                  <input type="text" name="last-name" class="form-control" />
+                </div>
+              </div>
+
+              <label>Address Line</label>
+              <input type="text" name="address" class="form-control" />
+
+              <div class="form-div">
+                <div>
+                  <label>Barangay</label>
+                  <input type="text" name="barangay" class="form-control" />
+                </div>
+                <div>
+                  <label>Province</label>
+                  <input type="text" name="province" class="form-control" />
+                </div>
+
+                <div>
+                  <label>Country</label>
+                  <input type="text" name="country" class="form-control" />
+                </div>
+              </div>
+
+              <div class="form-div">
+                <div>
+                  <label>Zipcode</label>
+                  <input type="text" name="zipcode" class="form-control" />
+                </div>
+
+                <div>
+                  <label>Department</label>
+                  <select
+                    class="form-select"
+                    id="dept-select"
+                    name="department"
+                  >
+                    <option value="Marketing">Marketing</option>
+                    <option value="Shipping">Shipping</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label>Designation</label>
+                  <select
+                    class="form-select"
+                    id="desg-select"
+                    name="designation"
+                  >
+                    <option value="Team Leader">Team Leader</option>
+                    <option value="Member">Member</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label>Type</label>
+                  <select class="form-select" id="type-select" name="type">
+                    <option value="Full-time">Full-time</option>
+                    <option value="Part-time">Part-time</option>
+                  </select>
+                </div>
+                <div>
+                  <label>Status</label>
+                  <select class="form-select" id="status-select" name="status">
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                    <option value="Resigned">Resigned</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="btn-div">
+                <button type="submit" class="btn btn-outline-primary add-btn">
+                  Add Employee
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="container">
+          <table class="table table-hover actual-table">
+            <thead>
+              <tr>
+                <th>Employee ID</th>
+                <th>First Name</th>
+                <th>Middle Name</th>
+                <th>Last Name</th>
+                <th>Address Line</th>
+                <th>Barangay</th>
+                <th>Province</th>
+                <th>Country</th>
+                <th>Zipcode</th>
+                <th>Department</th>
+                <th>Designation</th>
+                <th>Employee Type</th>
+                <th>Status</th>
+                <th colspan="3" style="text-align: center">Actions</th>
+              </tr>
+            </thead>
+
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="leave-list-container">
+        <div class="div-title"><h1>Leave List</h1></div>
+
+        <table class="table table-hover leave-table">
+          <thead>
+            <tr>
+              <th>Employee ID</th>
+              <th>First Name</th>
+              <th>Middle Name</th>
+              <th>Last Name</th>
+              <th>Higher Superior</th>
+              <th>Department</th>
+              <th>Designation</th>
+              <th>Employee Type</th>
+              <th>Status</th>
+              <th colspan="3" style="text-align: center">Actions</th>
+            </tr>
+          </thead>
+
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <div class="signatories-list-container">
+        <div class="div-title"><h1>Signatories List</h1></div>
+
+        <table class="table table-hover signatories-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Employee ID</th>
+              <th>Superior</th>
+              <th>Status</th>
+              <th colspan="3" style="text-align: center">Actions</th>
+            </tr>
+          </thead>
+
+          <tbody></tbody>
+        </table>
+        <div class="btn-div">
+          <button
+            type="submit"
+            class="btn btn-outline-primary add-signatories-btn"
+          >
+            Add Signatories
+          </button>
+        </div>
+      </div>
+
+      <div class="leave-modal-container">
+        <div class="leave-modal">
+          <div class="modal-header">
+            <h1>Leave Form</h1>
+            <button class="exit-modal">❌</button>
+          </div>
+
+          <div class="modal-grid">
             <div>
-              <label>First Name</label>
-              <input type="text" name="first-name" class="form-control" />
+              <label>Start leave</label>
+              <input type="text" name="start-leave" class="form-control" />
             </div>
 
             <div>
-              <label>Middle Name</label>
-              <input type="text" name="middle-name" class="form-control" />
+              <label>End leave</label>
+              <input type="text" name="end-leave" class="form-control" />
             </div>
 
             <div>
-              <label>Last Name</label>
-              <input type="text" name="last-name" class="form-control" />
+              <label>Leave type</label>
+              <select
+                class="form-select"
+                id="leave-type-select"
+                name="leave-type"
+              >
+                <option value="Vacation">Vacation</option>
+                <option value="Sick">Sick</option>
+                <option value="Maternity">Maternity</option>
+                <option value="Paternity">Paternity</option>
+              </select>
+            </div>
+
+            <div>
+              <label>Leave status</label>
+              <select
+                class="form-select"
+                id="leave-status-select"
+                name="leave-status"
+              >
+                <option value="Approved">Approved</option>
+                <option value="Denied">Denied</option>
+                <option value="Pending">Pending</option>
+              </select>
             </div>
           </div>
 
-          <label>Address Line</label>
-          <input type="text" name="address" class="form-control" />
+          <div class="btn-div">
+            <button type="submit" class="btn btn-outline-primary add-leave">
+              Add Leave
+            </button>
+          </div>
+        </div>
+      </div>
 
-          <div class="form-div">
-            <div>
-              <label>Barangay</label>
-              <input type="text" name="barangay" class="form-control" />
-            </div>
-            <div>
-              <label>Province</label>
-              <input type="text" name="province" class="form-control" />
-            </div>
-
-            <div>
-              <label>Country</label>
-              <input type="text" name="country" class="form-control" />
-            </div>
+      <div class="signatories-modal-container">
+        <div class="signatories-modal">
+          <div class="modal-header">
+            <h1>Add Signatories</h1>
+            <button class="exit-modal">❌</button>
           </div>
 
-          <div class="form-div">
+          <div class="modal-grid">
             <div>
-              <label>Zipcode</label>
-              <input type="text" name="zipcode" class="form-control" />
+              <label>Employee ID</label>
+              <input type="text" name="start-leave" class="form-control" />
             </div>
 
             <div>
-              <label>Department</label>
-              <select class="form-select" id="dept-select" name="department">
-                <option value="Marketing">Marketing</option>
-                <option value="Shipping">Shipping</option>
+              <label>Higher Superior</label>
+              <select class="form-select" id="superior-select" name="superior">
+                <option value="Marketing Head">Marketing Head</option>
+                <option value="Shipping Head">Shipping Head</option>
+                <option value="Manager">Manager</option>
               </select>
             </div>
+
             <div>
-              <label>Employee Type</label>
-              <select class="form-select" id="type-select" name="type">
-                <option value="Full-time">Full-time</option>
-                <option value="Part-time">Part-time</option>
-              </select>
-            </div>
-            <div>
-              <label>Status</label>
-              <select class="form-select" id="status-select" name="status">
+              <label>Superior status</label>
+              <select
+                class="form-select"
+                id="superior-status-select"
+                name="superior-status"
+              >
                 <option value="Active">Active</option>
                 <option value="Inactive">Inactive</option>
                 <option value="Resigned">Resigned</option>
               </select>
             </div>
           </div>
-
-          <div class="form-div"></div>
-
-          <div class="btn-div">
-            <button type="submit" class="btn btn-outline-primary add-btn">
-              Add Employee
-            </button>
-          </div>
         </div>
-      </form>
-    </div>
+      </div>
 
-    <div class="container">
-      <table class="table table-hover actual-table">
-        <thead>
-          <tr>
-            <th>Employee Number</th>
-            <th>First Name</th>
-            <th>Middle Name</th>
-            <th>Last Name</th>
-            <th>Address Line</th>
-            <th>Barangay</th>
-            <th>Province</th>
-            <th>Country</th>
-            <th>Zipcode</th>
-            <th>Department</th>
-            <th>Employee Type</th>
-            <th>Status</th>
-            <th colspan="2" style="text-align: center">Actions</th>
-          </tr>
-        </thead>
-
-        <tbody></tbody>
-      </table>
+      <div class="overlay"></div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="Resources/main.js"></script>

@@ -1,6 +1,6 @@
 $(document).ready(function () {
   //Add row
-  $("form").submit(function (e) {
+  $(".form-add").submit(function (e) {
     e.preventDefault();
     // Get values
     let number = $("input[name= number]").val();
@@ -13,6 +13,7 @@ $(document).ready(function () {
     let country = $("input[name= country]").val();
     let zipcode = $("input[name= zipcode]").val();
     let department = $("#dept-select option:selected").val();
+    let designation = $("#desg-select option:selected").val();
     let type = $("#type-select option:selected").val();
     let status = $("#status-select option:selected").val();
 
@@ -38,6 +39,8 @@ $(document).ready(function () {
         zipcode +
         "'data-department='" +
         department +
+        "'data-designation='" +
+        designation +
         "'data-type='" +
         type +
         "'data-status='" +
@@ -63,10 +66,12 @@ $(document).ready(function () {
         "</td><td>" +
         department +
         "</td><td>" +
+        designation +
+        "</td><td>" +
         type +
         "</td><td>" +
         status +
-        "</td><td><button class='btn btn-outline-info btn-edit'>Edit</button></td><td><button class='btn btn-outline-danger btn-del'>Delete</button></td></tr>"
+        "</td><td><button class='btn btn-outline-info btn-edit'>Edit</button></td><td><button class='btn btn-outline-danger btn-del'>Delete</button></td><td><button class='btn btn-outline-warning btn-leave'>Leave</button></td></tr>"
     );
 
     $("input").val("");
@@ -90,6 +95,7 @@ $(document).ready(function () {
     let country = $(this).parents("tr").attr("data-country");
     let zipcode = $(this).parents("tr").attr("data-zipcode");
     let department = $(this).parents("tr").attr("data-department");
+    let designation = $(this).parents("tr").attr("data-designation");
     let type = $(this).parents("tr").attr("data-type");
     let status = $(this).parents("tr").attr("data-status");
 
@@ -195,6 +201,21 @@ $(document).ready(function () {
       .parents("tr")
       .find("td:eq(10)")
       .html(
+        "<select name='edit-designation' class='form-control' id='desg-select'>" +
+          '<option value="Team Leader">Team Leader</option>' +
+          '<option value="Member">Member</option>' +
+          "</select>"
+      );
+
+    $("#desg-select option[value='" + designation + "']").attr(
+      "selected",
+      "selected"
+    );
+
+    $(this)
+      .parents("tr")
+      .find("td:eq(11)")
+      .html(
         "<select name='edit-type' class='form-control' id='type-select'>" +
           '<option value="Full-time">Full-time</option>' +
           '<option value="Part-time">Part-time</option>' +
@@ -205,7 +226,7 @@ $(document).ready(function () {
 
     $(this)
       .parents("tr")
-      .find("td:eq(11)")
+      .find("td:eq(12)")
       .html(
         "<select name='edit-status' class='form-control' id='status-select' >" +
           '<option value="Active">Active</option>' +
@@ -221,7 +242,7 @@ $(document).ready(function () {
 
     $(this)
       .parents("tr")
-      .find("td:eq(12)")
+      .find("td:eq(13)")
       .prepend("<button class='btn btn-outline-info btn-save'>Save</button>");
     $(this).hide();
   });
@@ -259,6 +280,11 @@ $(document).ready(function () {
       .find("#dept-select option:selected")
       .val();
 
+    let designation = $(this)
+      .parents("tr")
+      .find("#desg-select option:selected")
+      .val();
+
     let type = $(this).parents("tr").find("#type-select option:selected").val();
 
     let status = $(this)
@@ -277,8 +303,9 @@ $(document).ready(function () {
     $(this).parents("tr").find("td:eq(7)").text(country);
     $(this).parents("tr").find("td:eq(8)").text(zipcode);
     $(this).parents("tr").find("td:eq(9)").text(department);
-    $(this).parents("tr").find("td:eq(10)").text(type);
-    $(this).parents("tr").find("td:eq(11)").text(status);
+    $(this).parents("tr").find("td:eq(10)").text(designation);
+    $(this).parents("tr").find("td:eq(11)").text(type);
+    $(this).parents("tr").find("td:eq(12)").text(status);
 
     // Change data
     $(this).parents("tr").attr("data-number", number);
@@ -291,6 +318,7 @@ $(document).ready(function () {
     $(this).parents("tr").attr("data-country", country);
     $(this).parents("tr").attr("data-zipcode", zipcode);
     $(this).parents("tr").attr("data-department", department);
+    $(this).parents("tr").attr("data-desination", designation);
     $(this).parents("tr").attr("data-type", type);
     $(this).parents("tr").attr("data-status", status);
 
@@ -298,5 +326,78 @@ $(document).ready(function () {
     $(this).parents("tr").find(".btn-edit").show();
     $(this).parents("tr").find(".btn-save").remove();
     console.log(status);
+  });
+
+  // Change div lists
+  var employeeDivBtn = $(".employee-list-btn");
+  var leaveDivBtn = $(".leave-list-btn");
+  var signatoriesBtn = $(".signatories-list-btn");
+  var employeeDiv = $(".employee-list-container");
+  var leaveDiv = $(".leave-list-container");
+  var signatoriesDiv = $(".signatories-list-container");
+
+  employeeDivBtn.on("click", function () {
+    employeeDiv.css("display", "block");
+    leaveDiv.css("display", "none");
+    signatoriesDiv.css("display", "none");
+    employeeDivBtn.addClass("active");
+    leaveDivBtn.removeClass("active");
+    signatoriesBtn.removeClass("active");
+  });
+
+  leaveDivBtn.on("click", function () {
+    leaveDiv.css("display", "block");
+    employeeDiv.css("display", "none");
+    signatoriesDiv.css("display", "none");
+    employeeDivBtn.removeClass("active");
+    leaveDivBtn.addClass("active");
+    signatoriesBtn.removeClass("active");
+  });
+
+  signatoriesBtn.on("click", function () {
+    signatoriesDiv.css("display", "block");
+    leaveDiv.css("display", "none");
+    employeeDiv.css("display", "none");
+    employeeDivBtn.removeClass("active");
+    leaveDivBtn.removeClass("active");
+    signatoriesBtn.addClass("active");
+  });
+
+  // Leave-btn-modal
+  var exitModal = $(".exit-modal");
+  var leaveModalContainer = $(".leave-modal-container");
+  var leaveModal = $(".leave-modal");
+  var overlay = $(".overlay");
+  var signatoriesModalContainer = $(".signatories-modal-container");
+  var signatoriesModal = $(".singatories-modal");
+
+  // Exit modal
+  exitModal.on("click", function () {
+    leaveModal.css("display", "none");
+    leaveModalContainer.css("display", "none");
+    signatoriesModal.css("display", "none");
+    signatoriesModalContainer.css("display", "none");
+    overlay.css("display", "none");
+  });
+
+  overlay.on("click", function () {
+    leaveModal.css("display", "none");
+    leaveModalContainer.css("display", "none");
+    overlay.css("display", "none");
+    signatoriesModal.css("display", "none");
+    signatoriesModalContainer.css("display", "none");
+  });
+
+  // Show modal
+  $("body").on("click", ".btn-leave", function () {
+    leaveModal.css("display", "block");
+    leaveModalContainer.css("display", "block");
+    overlay.css("display", "block");
+  });
+
+  $("body").on("click", ".add-signatories-btn", function () {
+    signatoriesModalContainer.css("display", "block");
+    signatoriesModal.css("display", "block");
+    overlay.css("display", "block");
   });
 });
