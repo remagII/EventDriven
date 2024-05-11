@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+  <title>Payroll</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="payrollStyles.css" />
+</head>
+<header>
+  <div class="header">
+    <div class="btn-header-flex">
+      <button class="btn btn-outline-primary active payroll-list-btn">
+        Payroll list
+      </button>
+      <button class="btn btn-outline-primary overall-payroll-btn">
+        Overall Payroll Report
+      </button>
+    </div>
+    <div class="employee-page-div">
+      <button class="employee-page-btn">
+        <a href="../index.html">Employee List </a>
+        <div>
+          <!-- ICON DIV HERE -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="employee-page-icon">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+          </svg>
+        </div>
+      </button>
+    </div>
+  </div>
+</header>
+
+
+
+
+<body>
+  <div class="all-container ">
+    <div class="payroll-container">
+      <div class="div-title">
+        <h1>Payroll List</h1>
+      </div>
+      <div class="form-container">
+        <form class="form-add">
+          <div class="form-group">
+            <div>
+              <h1>Employee Details</h1>
+            </div>
+            <div class="form-div section-div">
+
+
+              <input type="text" name="ID-payroll" id="ID-payroll" class="form-control employee-id"
+                value='Employee ID' />
+              <div>
+                <p class="payroll-form-title">First Name</p>
+              </div>
+
+              <div>
+                <input type="text" name="ID-payroll" id="ID-payroll" class="form-control employee-name"
+                  value='Employee Name' disabled />
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h1>Earnings</h1>
+          </div>
+
+          <div class="form-div section-div">
+
+
+            <div>
+              <p class="payroll-form-title">Regular Pay</p>
+              <input type="text" name="regular-pay" id="regular-pay" class="form-control" value="0.00" />
+            </div>
+
+            <div>
+              <p class="payroll-form-title">Overtime Pay</p>
+              <input type="text" name="overtime-pay" id="overtime-pay" class="form-control" value="0.00" />
+            </div>
+
+
+            <div>
+              <p class="payroll-form-title">Gross Earnings</p>
+              <input type="text" class="form-control" id="gross-earnings" name="gross-earnings" disabled readonly
+                value="0.00">
+            </div>
+
+          </div>
+
+          <div>
+            <h1>Deductions</h1>
+          </div>
+
+          <div class="form-div section-div">
+            <div>
+              <p class="payroll-form-title">Pagibig</p>
+              <p>2%</p>
+            </div>
+
+            <div>
+              <p class="payroll-form-title">SSS</p>
+              <p>4.5%</p>
+            </div>
+
+            <div>
+              <p class="payroll-form-title">Philhealth</p>
+              <p>5%</p>
+            </div>
+
+            <div>
+              <p class="payroll-form-title">TIN</p>
+              <p>500</p>
+            </div>
+
+            <div>
+              <p class="payroll-form-title">Others</p>
+              <input type="text" name="other-deduction" id="other-deduction" class="form-control" value="0.00" />
+            </div>
+
+          </div>
+
+          <div class="form-div section-div">
+            <div>
+              <p class="payroll-form-title">Total Deductions</p>
+              <input type="text" class="form-control" id="total-deductions" name="total-deductions" readonly disabled
+                value="0.00">
+            </div>
+
+            <div class="net-pay-div">
+              <p class="payroll-form-title">Net Pay</p>
+              <input type="text" class="form-control" id="net-pay" name="net-pay" disabled readonly value="0.00">
+            </div>
+
+          </div>
+
+          <div>
+            <h1>Payroll Date</h1>
+          </div>
+
+          <div class="form-div section-div">
+
+            <div>
+              <p class="payroll-form-title">Payroll</p>
+              <input class="form-control" type="date" id="date-payroll" name="date-payroll">
+            </div>
+
+            <div>
+              <p class="payroll-form-title">Start Payroll</p>
+              <input class="form-control" type="date" id="start-payroll" name="start-payroll">
+            </div>
+
+            <div>
+              <p class="payroll-form-title">End payroll</p>
+              <input class='form-control' type="date" id="end-payroll" name="end-payroll">
+            </div>
+
+          </div>
+
+          <div class="btn-div">
+            <button type="submit" class="btn btn-outline-primary add-payslip-btn">
+              Add Payslip
+            </button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+
+    <div class="overall-payroll-div inactive">
+
+      <div class="div-title">
+        <h1>Overall Payroll List</h1>
+      </div>
+
+      <div class="overall-payroll-grid">
+
+
+        <div class="overall-window-div">
+          <div class="overall-window">
+            <h1>Overall Employees</h1>
+          </div>
+
+          <div class="overall-window">
+            <input class='form-control' type="text" id="overall-employees" name="overall-employees" readonly disabled>
+          </div>
+        </div>
+
+        <div class="overall-window-div">
+          <div class="overall-window">
+            <h1>Overall Gross Earnings</h1>
+          </div>
+
+          <div class="overall-window">
+            <input class='form-control' type="text" id="overall-gross" name="overall-gross" readonly disabled>
+          </div>
+        </div>
+
+        <div class="overall-window-div">
+          <div class="overall-window">
+            <h1>Overall Deductions</h1>
+          </div>
+
+          <div class="overall-window">
+            <input class='form-control' type="text" id="overall-deductions" name="overall-deductions" readonly disabled>
+          </div>
+        </div>
+
+        <div class="overall-window-div">
+          <div class="overall-window">
+            <h1>Overall Net Pay</h1>
+          </div>
+
+          <div class="overall-window">
+            <input class='form-control' type="text" id="overall-net-pay" name="overall-net-pay" readonly disabled>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="main.js"></script>
+<script src="payrollScript.js"></script>
+
+</html>

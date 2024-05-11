@@ -335,6 +335,11 @@ $(document).ready(function () {
   var employeeDiv = $(".employee-list-container");
   var leaveDiv = $(".leave-list-container");
   var signatoriesDiv = $(".signatories-list-container");
+  var overallPayrollBtn = $(".overall-payroll-btn");
+  var payrollDiv = $(".payroll-container");
+  var payrollListBtn = $(".payroll-list-btn");
+  var payrollOverallBtn = $(".overall-payroll-btn");
+  var overallPayrollDiv = $(".overall-payroll-div");
 
   employeeDivBtn.on("click", function () {
     employeeDiv.css("display", "block");
@@ -361,6 +366,22 @@ $(document).ready(function () {
     employeeDivBtn.removeClass("active");
     leaveDivBtn.removeClass("active");
     signatoriesBtn.addClass("active");
+  });
+
+  overallPayrollBtn.on("click", function () {
+    payrollDiv.css("display", "none");
+    payrollListBtn.removeClass("active");
+    payrollOverallBtn.addClass("active");
+    overallPayrollDiv.removeClass("inactive");
+    overallPayrollDiv.css("display", "block");
+  });
+
+  payrollListBtn.on("click", function () {
+    payrollDiv.css("display", "block");
+    payrollListBtn.addClass("active");
+    payrollOverallBtn.removeClass("active");
+    overallPayrollDiv.addClass("inactive");
+    overallPayrollDiv.css("display", "none");
   });
 
   // Leave-btn-modal

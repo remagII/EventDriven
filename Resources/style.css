@@ -7,17 +7,58 @@ html {
   font-family: "inter";
 }
 
+html::-webkit-scrollbar {
+  display: none;
+}
+
+html {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
 .header {
   display: flex;
   align-items: center;
-  justify-content: left;
-  gap: 2.4rem;
+  justify-content: space-between;
+  gap: 3.4rem;
   padding: 2.4rem;
   background-color: azure;
+  border-bottom: 1px solid rgb(227, 227, 227);
+}
+
+.btn-header-flex {
+  gap: 2.4rem;
+  display: flex;
 }
 
 .header-title {
   font-size: 3.4rem;
+}
+
+.payroll-btn {
+  border-radius: 0.6rem;
+  border: 1px solid;
+  display: flex;
+  gap: 1.2rem;
+  padding: 0.4rem 1.6rem;
+  font-size: 2rem;
+  color: #146e7c;
+  background-color: azure;
+  transition: all 0.1s;
+}
+
+.payroll-btn:hover {
+  background-color: #22b8cf;
+  color: white;
+}
+
+.payroll-icon {
+  width: 3rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .container {
@@ -53,11 +94,16 @@ html {
 }
 
 body {
+  background-color: #a5d8ff;
+}
+
+form {
   background-color: #d0ebff;
 }
 
-table {
-  max-width: 100% !important;
+.table-container {
+  max-height: 30rem;
+  overflow-y: auto;
 }
 
 thead {
@@ -84,12 +130,9 @@ label {
   font-size: 1.6rem;
 }
 
-input:active {
-  width: 100% !important;
-}
-
 .form-control {
   font-size: 1.6rem;
+  max-width: 100%;
 }
 
 .form-div {
